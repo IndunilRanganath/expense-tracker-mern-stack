@@ -2,15 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Chivo+Mono:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
 :root{
-  --color-yollow: #f9c73f;
+  --color-yollow : #f9c74f;
   --color-purple: #9d4edd;
 }
 
-*>*{
-  font-family: 'Chivo Mono', monospace;
+* > *{
+  font-family: 'Poppins', sans-serif;
   margin: 0;
   padding: 0;
 }
@@ -23,9 +23,11 @@
 .bg-yellow{
   background-color: var(--color-yollow);
 }
+
 .bg-purple{
   background-color: var(--color-purple);
 }
+
 .chart .title{
   position: absolute;
   left: 0;
@@ -34,8 +36,7 @@
   margin-left: auto;
   margin-right: auto;
 }
+
 .form-input{
-  @apply mt-1 block w-full py-2 px-3 border-gray-200 bg-white rounded-md focus:outline focus:ring-indigo-500 sm:text-sm
+  @apply mt-1 block w-full py-2 px-3 border border-gray-200 bg-white rounded-md focus:outline-none focus:ring-indigo-500 sm:text-sm;
 }
-
-

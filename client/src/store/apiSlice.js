@@ -1,48 +1,47 @@
-import { createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-const baseURI = "http://localhost:8080";
-
+const baseURI = 'http://localhost:8080';
 
 export const apiSlice = createApi({
-    baseQuery : fetchBaseQuery({ baseUrl: baseURI}),
-    endpoints: builder => ({
+    baseQuery : fetchBaseQuery({ baseUrl : baseURI}),
+    endpoints : builder => ({
         // get categories
-        getCategories: builder.query({
-            // get : 'http://localhost:8080/api/categories'
-            query:()=>'/api/categories'
+        getCategories : builder.query({
+            // get: 'http://localhost:8080/api/categories'
+            query: () => '/api/categories',
+            providesTags: ['categories']
         }),
 
         // get labels
-        getLabels: builder.query({
-            // get : 'http://localhost:8080/api/labels'
-            query:()=>'/api/labels',
+        getLabels : builder.query({
+            // get: 'http://localhost:8080/api/labels'
+            query : () => '/api/labels',
             providesTags: ['transaction']
         }),
 
-        //add transaction
-        addTransaction: builder.mutation({
-            // post : 'http://localhost:8080/api/transaction'
-                query : (initialTransaction) => ({
-                    url:'/api/transaction',
-                    method:"POST",
-                    body:initialTransaction
+        // add new Transaction
+        addTransaction : builder.mutation({
+            query : (initialTransaction) => ({
+                  // post: 'http://localhost:8080/api/transaction'
+                url: '/api/transaction',
+                method: "POST",
+                body: initialTransaction
             }),
-            invalidatesTags:['transaction']
+            invalidatesTags: ['transaction']
         }),
 
-        // delete recode 
+        // delete record
         deleteTransaction : builder.mutation({
-            // delete : 'http://localhost:8080/api/transaction'
-            query: recordid => ({
+            query : recordId => ({
+                // delete: 'http://localhost:8080/api/transaction'
                 url : '/api/transaction',
-                method: "DELETE",
-                body: recordid
+                method : "DELETE",
+                body : recordId
             }),
-            invalidatesTags:['transaction']
+            invalidatesTags: ['transaction']
         })
-
-        
 
     })
 })
+
 export default apiSlice;
